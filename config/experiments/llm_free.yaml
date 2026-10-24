@@ -1,0 +1,18 @@
+# 对照组：切回免费档 Qwen3-8B
+#
+# 实测（各 5 次，同一提示词，scripts/llm_bench.py）：
+#
+#   model                              p50      p95     备注
+#   Qwen/Qwen3-8B（免费）              47.1s    58.8s    5 次全在 41–59s，稳定排队
+#   Qwen/Qwen3-Coder-30B-A3B（付费）    1.0s     1.4s    快 47 倍，输出更简洁
+#
+# 默认已用付费档。这个文件用于：
+# 1. 成本对比实验（跑同一组 gold 集，比较分数是否真的差）；
+# 2. 免费额度充足时压测（但注意 TPM 是账号级共享，长跑必触发 50602）。
+#
+# 用法：
+#   python tasks.py ask "how does Redis expire keys" --experiment llm_free --allow-uncalibrated
+#   python -m codeatlas.cli ask "..." --experiment llm_free
+
+models:
+  llm: Qwen/Qwen3-8B

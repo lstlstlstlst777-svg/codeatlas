@@ -1,0 +1,45 @@
+# base image 用 digest 钉死（ISSUE-016）：本机只能通过第三方镜像站拉取，
+# 钉 tag 意味着别人换掉 `3.11-slim` 指向的内容时会悄悄拿到不同的 base。
+# digest 对应 python:3.11-slim（2026-10-23 实测）。升级方法：
+#   docker pull python:3.11-slim
+#   docker image inspect python:3.11-slim --format '{{index .RepoDigests 0}}'
+FROM python:3.11-slim@sha256:b7a9e5f6a93d6d4a31f129bbd4bdee69efccb6ded0fb230d78aafaf37af98377
+
+# 国内构建走阿里云源；CI 里传 --build-arg PIP_INDEX_URL=https://pypi.org/simple
+ARG PIP_INDEX_URL=https://mirrors.aliyun.com/pypi/simple
+ARG PIP_TRUSTED_HOST=mirrors.aliyun.com
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    PIP_INDEX_URL=${PIP_INDEX_URL} \
+    PIP_TRUSTED_HOST=${PIP_TRUSTED_HOST}
+
+WORKDIR /app
+
+# 依赖与源码分层：装依赖要 170s+，改一行代码却要重跑一遍纯属浪费。
+# 这一层只随 pyproject.toml 变化。
+COPY pyproject.toml README.md ./
+RUN python - <<'PY'
+import subprocess, sys, tomllib
+
+deps = tomllib.load(open("pyproject.toml", "rb"))["project"]["dependencies"]
+subprocess.check_call([sys.executable, "-m", "pip", "install", "--no-cache-dir", *deps])
+PY
+
+# 这一层随源码变化，但 --no-deps 让它只需几秒。
+COPY src ./src
+# 前端是纯静态文件（无构建步骤），由 FastAPI 直接托管，单独放一层方便改样式后快速重建
+COPY web ./web
+RUN pip install --no-cache-dir --no-deps . && rm -rf /root/.cache/pip
+
+# 索引与代码库都不进镜像：它们由 volume 挂载，换数据不必重建镜像。
+# 镜像只保证"代码能跑"，数据属于部署。
+VOLUME ["/app/data"]
+
+EXPOSE 8000
+
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
+    CMD python -c "import urllib.request;urllib.request.urlopen('http://127.0.0.1:8000/healthz')"
+
+CMD ["uvicorn", "codeatlas.api.app:app", "--host", "0.0.0.0", "--port", "8000"]

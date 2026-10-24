@@ -1,0 +1,47 @@
+# 检索链路唯一真源。P0 先以 settings.py 的默认值 + .env 为准，
+# P2 起由本文件覆盖（load_config 合并顺序：default.yaml < experiments/*.yaml < .env）。
+indexing:
+  repo: vendor/redis-7.2.5
+  include: ["src/*.c", "src/*.h"]
+  exclude: ["deps/", "tests/", "modules/", "src/*.test.c"]
+  chunker_version: chunker-v2
+  max_chunk_lines: 120
+  max_split_depth: 2
+
+retrieval:
+  dense_limit: 50
+  bm25_limit: 50
+  dense_weight: 1.0
+  bm25_weight: 0.75        # 由 sweep 得出，禁止手填
+  rrf_k: 60                # 1-based rank，与 Qdrant 原生 RRF(k=2, 0-based) 不同源
+  # 30→24、8000→3000 由 scripts/rerank_tuning.py 实测决定：
+  # 输入 44K→30K 字符，p50 2714→537ms，top-5 与 baseline 重合 94%、top-1 10/10 一致。
+  rerank_window: 24
+  rerank_max_doc_chars: 3000
+  # 正常 p50 500-800ms；原来 20s 会让"超时+重试"合计 22.7s（实测 p95 就是这样来的）
+  rerank_timeout: 8.0
+  top_k: 5
+
+bm25:
+  k1: 1.2
+  b: 0.5
+  # 符号名额外计入次数：实测查 `zmalloc_used_memory` 时不加此项，调用它 4 次的
+  # zmalloc_test 会压过只定义一次的函数（纯词频的固有短板）。5 是实测反超的最小值附近。
+  symbol_boost: 5
+
+gate:
+  # 由 eval/dev.jsonl（40 条：25 该答 / 15 该拒）标定，scripts/calibrate_gate.py。
+  # 特征 = log10(rerank_top1)：该答 median=-0.14、该拒 median=-1.20，线性尺度无法区分。
+  # 口径：约束 FalseRefusalRate<=10% 下最大化 Refusal F1。
+  # 结果：τ=-1.00 -> F1=0.741 P=0.83 R=0.67 FFR=8%（2/25 该答被误拒）。
+  # 注意：dev 集只有 40 条，τ 的置信区间较宽，P7 扩到 gold 集后需重标。
+  refuse_tau: -1.0
+  max_repair_attempts: 2
+
+models:
+  # 付费档，实测 p50=1.0s vs 免费档 47.1s（5 次全在 41–59s，稳定排队不是抖动）。
+  # 成本：$0.07/1M input + $0.28/1M output，单次问答约 ¥0.0016。
+  # 对照数据见 docs/ISSUES.md ISSUE-019。
+  llm: Qwen/Qwen3-Coder-30B-A3B-Instruct
+  embedding: BAAI/bge-m3
+  rerank: BAAI/bge-reranker-v2-m3

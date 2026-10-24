@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CodeAtlas — 带引用的代码问答</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">◈</span>
+      <div>
+        <h1>CodeAtlas</h1>
+        <p class="sub" data-text="subtitle"></p>
+      </div>
+    </div>
+    <div class="status" id="status" data-state="idle">
+      <span class="dot"></span><span id="statusText" data-text="statusIdle"></span>
+    </div>
+    <button type="button" class="newchat" id="newchat" data-text="newChat" hidden></button>
+  </header>
+
+  <main class="main">
+    <form class="askbar" id="askform" autocomplete="off">
+      <input id="question" name="question" type="text" data-placeholder="placeholder" autofocus>
+      <button type="submit" id="send" data-text="send"></button>
+    </form>
+
+    <section class="examples" id="examples">
+      <span class="examples-label" data-text="examplesLabel"></span>
+      <div class="chips" id="chips"></div>
+    </section>
+
+    <section class="panel" id="panel" hidden>
+      <div class="stages" id="stages"></div>
+      <article class="answer" id="answer">
+        <div class="answer-body" id="answerBody"></div>
+        <span class="caret" id="caret" hidden></span>
+      </article>
+      <aside class="citations" id="citations" hidden>
+        <h2 data-text="citationsTitle"></h2>
+        <ol id="citeList"></ol>
+      </aside>
+      <div class="notice" id="notice" hidden></div>
+    </section>
+
+    <section class="empty" id="empty">
+      <p class="empty-title" data-text="emptyTitle"></p>
+      <p class="empty-hint" data-text="emptyHint"></p>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span data-text="footNote"></span>
+    <span class="foot-meta" id="footMeta"></span>
+  </footer>
+</div>
+<script src="/static/app.js"></script>
+</body>
+</html>

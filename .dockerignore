@@ -1,0 +1,12 @@
+.env
+.git/
+.github/
+vendor/
+data/
+frontend/node_modules/
+frontend/dist/
+tests/
+eval/report/
+*.md
+!README.md
+.workbuddy/

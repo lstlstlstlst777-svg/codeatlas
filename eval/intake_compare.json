@@ -1,0 +1,145 @@
+[
+  {
+    "query": "zmalloc_used_memory",
+    "ours": {
+      "evidence": 5,
+      "chars": 11761,
+      "files": 3
+    },
+    "agent": {
+      "keywords": [
+        "zmalloc_used_memory"
+      ],
+      "hits": 29,
+      "files": 6,
+      "chars": 65276
+    },
+    "ratio": 5.55020831561942
+  },
+  {
+    "query": "how does Redis expire keys",
+    "ours": {
+      "evidence": 5,
+      "chars": 8814,
+      "files": 4
+    },
+    "agent": {
+      "keywords": [
+        "expire",
+        "keys"
+      ],
+      "hits": 1145,
+      "files": 5,
+      "chars": 126506
+    },
+    "ratio": 14.352847742228274
+  },
+  {
+    "query": "where is the event loop created",
+    "ours": {
+      "evidence": 5,
+      "chars": 5835,
+      "files": 3
+    },
+    "agent": {
+      "keywords": [
+        "event",
+        "loop"
+      ],
+      "hits": 566,
+      "files": 9,
+      "chars": 119634
+    },
+    "ratio": 20.502827763496143
+  },
+  {
+    "query": "list type push and pop",
+    "ours": {
+      "evidence": 5,
+      "chars": 5704,
+      "files": 3
+    },
+    "agent": {
+      "keywords": [
+        "list",
+        "push"
+      ],
+      "hits": 1260,
+      "files": 8,
+      "chars": 127459
+    },
+    "ratio": 22.34554698457223
+  },
+  {
+    "query": "how to parse long long from string",
+    "ours": {
+      "evidence": 5,
+      "chars": 4614,
+      "files": 4
+    },
+    "agent": {
+      "keywords": [
+        "parse",
+        "long"
+      ],
+      "hits": 2396,
+      "files": 10,
+      "chars": 127158
+    },
+    "ratio": 27.5591677503251
+  },
+  {
+    "query": "acl user permission check",
+    "ours": {
+      "evidence": 5,
+      "chars": 5223,
+      "files": 2
+    },
+    "agent": {
+      "keywords": [
+        "acl",
+        "user"
+      ],
+      "hits": 681,
+      "files": 6,
+      "chars": 139065
+    },
+    "ratio": 26.625502584721424
+  },
+  {
+    "query": "command table lookup by name",
+    "ours": {
+      "evidence": 5,
+      "chars": 3787,
+      "files": 2
+    },
+    "agent": {
+      "keywords": [
+        "command",
+        "table"
+      ],
+      "hits": 1755,
+      "files": 4,
+      "chars": 128433
+    },
+    "ratio": 33.91418008978083
+  },
+  {
+    "query": "replication handshake with master",
+    "ours": {
+      "evidence": 5,
+      "chars": 10825,
+      "files": 1
+    },
+    "agent": {
+      "keywords": [
+        "replication",
+        "handshake"
+      ],
+      "hits": 395,
+      "files": 6,
+      "chars": 129670
+    },
+    "ratio": 11.978752886836027
+  }
+]

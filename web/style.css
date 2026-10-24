@@ -1,0 +1,434 @@
+/* CodeAtlas 前端样式。
+   深色为主：这个界面大半面积是代码，浅底读代码比深底累。
+   颜色只用 CSS 变量，换主题改一处即可。 */
+
+:root {
+  --bg: #0f1115;
+  --bg-soft: #161a21;
+  --bg-raise: #1c212a;
+  --line: #262d38;
+  --line-soft: #1f242d;
+  --fg: #e6e9ef;
+  --fg-dim: #9aa4b2;
+  --fg-mute: #6b7686;
+  --accent: #6ea8fe;
+  --accent-dim: #2b4a75;
+  --ok: #4ade80;
+  --warn: #fbbf24;
+  --bad: #f87171;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+          "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --radius: 10px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ---------- 顶栏 ---------- */
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 22px 0 18px;
+  border-bottom: 1px solid var(--line-soft);
+}
+/* 状态与"新对话"都靠右；状态用 auto margin 顶过去，按钮跟在它后面 */
+.topbar .status { margin-left: auto; }
+
+.brand { display: flex; align-items: center; gap: 12px; }
+
+.logo {
+  font-size: 22px;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.sub {
+  margin: 2px 0 0;
+  font-size: 12.5px;
+  color: var(--fg-mute);
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12.5px;
+  color: var(--fg-dim);
+  padding: 5px 11px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg-soft);
+  white-space: nowrap;
+}
+
+.status .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--fg-mute);
+  transition: background 0.2s;
+}
+
+.status[data-state="ok"] .dot { background: var(--ok); }
+.status[data-state="busy"] .dot { background: var(--warn); animation: pulse 1.1s infinite; }
+.status[data-state="bad"] .dot { background: var(--bad); }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+
+/* ---------- 主体 ---------- */
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 26px 0 20px;
+}
+
+.askbar {
+  display: flex;
+  gap: 10px;
+}
+
+.askbar input {
+  flex: 1;
+  padding: 13px 16px;
+  font-size: 15px;
+  font-family: var(--sans);
+  color: var(--fg);
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  outline: none;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.askbar input::placeholder { color: var(--fg-mute); }
+.askbar input:focus { border-color: var(--accent-dim); background: var(--bg-raise); }
+
+.askbar button {
+  padding: 0 22px;
+  font-size: 14.5px;
+  font-family: var(--sans);
+  font-weight: 500;
+  color: #0b1020;
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.05s;
+}
+
+.askbar button:hover:not(:disabled) { opacity: 0.88; }
+.askbar button:active:not(:disabled) { transform: translateY(1px); }
+.askbar button:disabled { opacity: 0.35; cursor: not-allowed; }
+
+/* ---------- 示例 ---------- */
+
+.examples { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+.examples-label { font-size: 12.5px; color: var(--fg-mute); }
+
+.chips { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.chip {
+  padding: 5px 12px;
+  font-size: 12.5px;
+  font-family: var(--mono);
+  color: var(--fg-dim);
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.chip:hover { color: var(--accent); border-color: var(--accent-dim); }
+
+/* ---------- 面板 ---------- */
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  animation: fadein 0.25s ease;
+}
+
+@keyframes fadein {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: none; }
+}
+
+.stages {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  min-height: 22px;
+  margin-bottom: 6px;
+}
+
+.stage {
+  font-size: 11.5px;
+  font-family: var(--mono);
+  color: var(--fg-mute);
+  padding: 3px 9px;
+  border-radius: 5px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line-soft);
+}
+
+.stage.done { color: var(--ok); border-color: #24503a; }
+.stage.active { color: var(--warn); border-color: #5a4620; }
+.stage.fail { color: var(--bad); border-color: #5a2525; }
+
+.answer-body {
+  font-size: 15.5px;
+  line-height: 1.8;
+  color: var(--fg);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.answer-body code {
+  font-family: var(--mono);
+  font-size: 0.9em;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: var(--bg-raise);
+  color: #b8d4ff;
+}
+
+.caret {
+  display: inline-block;
+  width: 7px;
+  height: 1.05em;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  background: var(--accent);
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ---------- 引用 ---------- */
+
+.citations {
+  margin-top: 22px;
+  padding: 16px 18px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+}
+
+.citations h2 {
+  margin: 0 0 10px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-mute);
+}
+
+.citations ol { margin: 0; padding: 0; list-style: none; counter-reset: cite; }
+
+.citations li {
+  counter-increment: cite;
+  display: flex;
+  align-items: baseline;
+  gap: 0; /* path 与行号要紧贴，间距交给编号的 margin-right */
+  padding: 5px 0;
+  font-family: var(--mono);
+  font-size: 13px;
+}
+
+.citations li::before {
+  content: counter(cite);
+  flex: none;
+  width: 18px;
+  margin-right: 10px;
+  color: var(--fg-mute);
+  font-size: 11.5px;
+  text-align: right;
+}
+
+.cite-path { color: var(--accent); }
+.cite-lines { color: var(--fg-mute); }
+
+/* ---------- 提示与空态 ---------- */
+
+.notice {
+  margin-top: 18px;
+  padding: 13px 16px;
+  font-size: 14px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--bg-soft);
+  color: var(--fg-dim);
+}
+
+.notice[data-kind="refuse"] { border-color: #4a3a1a; background: #1e1a12; color: #e8d9b0; }
+.notice[data-kind="error"] { border-color: #4a2626; background: #1e1414; color: #f0c0c0; }
+.notice[data-kind="warn"] { border-color: #3a3520; background: #1a1812; color: #ded0a8; }
+
+.empty { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 6px; padding: 40px 0 60px; }
+
+.empty-title { margin: 0; font-size: 15px; color: var(--fg-dim); }
+.empty-hint { margin: 0; font-size: 13.5px; color: var(--fg-mute); }
+
+/* ---------- 页脚 ---------- */
+
+.foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 0 20px;
+  border-top: 1px solid var(--line-soft);
+  font-size: 12px;
+  color: var(--fg-mute);
+}
+
+.foot-meta { font-family: var(--mono); white-space: nowrap; }
+
+@media (max-width: 600px) {
+  .app { padding: 0 14px; }
+  .askbar { flex-direction: column; }
+  .askbar button { padding: 12px; }
+  .foot { flex-direction: column; gap: 4px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* 复制成功徽标 */
+.cite-badge {
+  margin-left: 8px;
+  padding: 1px 7px;
+  font-size: 11px;
+  font-family: var(--sans);
+  color: var(--ok);
+  border: 1px solid #24503a;
+  border-radius: 999px;
+  animation: fadein 0.15s ease;
+}
+
+/* ---------- 关键：hidden 必须真的隐藏 ----------
+   上面 .panel / .empty 用了 display:flex，作者样式的优先级高于 UA 样式表里的
+   [hidden]{display:none}，导致 el.hidden = true 完全无效——
+   表现就是"点击提问后没反应"：面板显示了，但空态没消失，看起来什么都没发生。 */
+[hidden] {
+  display: none !important;
+}
+
+/* ---------- 引用展开的代码面板 ---------- */
+
+.code-panel {
+  margin: 6px 0 10px 28px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #0b0e13;
+  overflow: hidden;
+  animation: fadein 0.15s ease;
+}
+
+.code-panel-error {
+  padding: 10px 14px;
+  font-size: 13px;
+  color: var(--fg-mute);
+}
+
+.code-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 7px 12px;
+  background: var(--bg-raise);
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.code-label {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--fg-dim);
+}
+
+.code-actions { display: flex; gap: 6px; flex: none; }
+
+.code-btn {
+  padding: 3px 10px;
+  font-size: 11.5px;
+  font-family: var(--sans);
+  color: var(--fg-dim);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.code-btn:hover { color: var(--accent); border-color: var(--accent-dim); }
+.code-btn.copied { color: var(--ok); border-color: #24503a; }
+.code-btn.failed { color: var(--bad); border-color: #5a2525; }
+
+.code-body {
+  margin: 0;
+  padding: 11px 12px;
+  max-height: 380px;
+  overflow: auto;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: #c9d4e3;
+  white-space: pre;
+  tab-size: 4;
+}
+
+/* 新对话：只在有会话时出现 */
+.newchat {
+  flex: none;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-family: var(--sans);
+  color: var(--fg-mute);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.newchat:hover { color: var(--fg-dim); border-color: var(--fg-mute); }

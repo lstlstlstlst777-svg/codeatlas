@@ -1,0 +1,965 @@
+{
+  "tau": -1.0,
+  "false_refusal_rate": 0.08,
+  "f1": 0.7407407407407408,
+  "recall_at_1": 0.52,
+  "recall_at_5": 0.72,
+  "rows": [
+    {
+      "id": "q001",
+      "question": "zmalloc_used_memory 这个函数做什么",
+      "category": "symbol",
+      "should_refuse": false,
+      "gold_symbols": [
+        "zmalloc_used_memory"
+      ],
+      "note": "定义在 src/zmalloc.c",
+      "top_score": 0.9223843812942505,
+      "top_scores": [
+        0.8477369546890259,
+        0.9223843812942505,
+        0.9216999411582947,
+        0.9202482104301453,
+        0.8981118202209473
+      ],
+      "feature": -0.03508805954591411,
+      "top1_symbol": "zmalloc_used_memory",
+      "top1_path": "src/zmalloc.c",
+      "recall1": true,
+      "recall5": true,
+      "degraded": []
+    },
+    {
+      "id": "q002",
+      "question": "aeCreateEventLoop 在哪里定义，它做了什么",
+      "category": "symbol",
+      "should_refuse": false,
+      "gold_symbols": [
+        "aeCreateEventLoop"
+      ],
+      "note": "src/ae.c",
+      "top_score": 0.3181430399417877,
+      "top_scores": [
+        0.3181430399417877,
+        0.2886587083339691,
+        0.26154786348342896,
+        0.25256192684173584,
+        0.23709604144096375
+      ],
+      "feature": -0.49737757344281036,
+      "top1_symbol": "aeCreateEventLoop",
+      "top1_path": "src/ae.c",
+      "recall1": true,
+      "recall5": true,
+      "degraded": []
+    },
+    {
+      "id": "q003",
+      "question": "listTypePush 的实现逻辑",
+      "category": "symbol",
+      "should_refuse": false,
+      "gold_symbols": [
+        "listTypePush"
+      ],
+      "note": "src/t_list.c",
+      "top_score": 0.8901200294494629,
+      "top_scores": [
+        0.8901200294494629,
+        0.8272590637207031,
+        0.6364575028419495,
+        0.4698527455329895,
+        0.4364355802536011
+      ],
+      "feature": -0.05055142637445194,
+      "top1_symbol": "listTypePush",
+      "top1_path": "src/t_list.c",
+      "recall1": true,
+      "recall5": true,
+      "degraded": []
+    },
+    {
+      "id": "q004",
+      "question": "string2ll 如何解析字符串为 long long",
+      "category": "symbol",
+      "should_refuse": false,
+      "gold_symbols": [
+        "string2ll"
+      ],
+      "note": "src/util.c",
+      "top_score": 0.9911990761756897,
+      "top_scores": [
+        0.9911990761756897,
+        0.9899901151657104,
+        0.9802519679069519,
+        0.9531270265579224,
+        0.951650857925415
+      ],
+      "feature": -0.0038391114059913244,
+      "top1_symbol": "string2l",
+      "top1_path": "src/util.c",
+      "recall1": false,
+      "recall5": true,
+      "degraded": []
+    },
+    {
+      "id": "q005",
+      "question": "rdbSaveRawString 怎么序列化一个字符串",
+      "category": "symbol",
+      "should_refuse": false,
+      "gold_symbols": [
+        "rdbSaveRawString"
+      ],
+      "note": "src/rdb.c",
+      "top_score": 0.9685812592506409,
+      "top_scores": [
+        0.9685812592506409,
+        0.9625816345214844,
+        0.9412112236022949,
+        0.9156088829040527,
+        0.9016808867454529
+      ],
+      "feature": -0.013863938224408515,
+      "top1_symbol": "rdbSaveRawString",
+      "top1_path": "src/rdb.c",
+      "recall1": true,
+      "recall5": true,
+      "degraded": []
+    },
+    {
+      "id": "q006",
+      "question": "ACLCheckAllPerm 检查哪些权限",
+      "category": "symbol",
+      "should_refuse": false,
+      "gold_symbols": [
+        "ACLCheckAllPerm"
+      ],
+      "note": "src/acl.c",
+      "top_score": 0.908780574798584,
+      "top_scores": [
+        0.908780574798584,
+        0.9073060750961304,
+        0.8802289366722107,
+        0.8541125059127808,
+        0.8153534531593323
+      ],
+      "feature": -0.04154096458634285,
+      "top1_symbol": "ACLCheckAllPerm",
+      "top1_path": "src/acl.c",
+      "recall1": true,
+      "recall5": true,
+      "degraded": []
+    },
+    {
+      "id": "q007",
+      "question": "dictFind 的查找流程",
+      "category": "symbol",
+      "should_refuse": false,
+      "gold_symbols": [
+        "dictFind"
+      ],
+      "note": "src/dict.c",
+      "top_score": 0.727882981300354,
+      "top_scores": [
+        0.6579269766807556,
+        0.727882981300354,
+        0.6771653294563293,
+        0.6165403127670288,
+        0.5516960024833679
+      ],
+      "feature": -0.1379384347809497,
+      "top1_symbol": "dictFind",
+      "top1_path": "src/dict.c",
+      "recall1": true,
+      "recall5": true,
+      "degraded": []
+    },
+    {
+      "id": "q008",
+      "question": "sdsMakeRoomFor 如何扩容 sds",
+      "category": "symbol",
+      "should_refuse": false,
+      "gold_symbols": [
+        "sdsMakeRoomFor"
+      ],
+      "note": "src/sds.c",
+      "top_score": 0.9822351932525635,
+      "top_scores": [
+        0.9822351932525635,
+        0.9765086770057678,
+        0.923737108707428,
+        0.8993295431137085,
+        0.8725139498710632
+      ],
+      "feature": -0.007784509257998697,
+      "top1_symbol": "sdsMakeRoomFor",
+      "top1_path": "src/sds.c",
+      "recall1": true,
+      "recall5": true,
+      "degraded": []
+    },
+    {
+      "id": "q009",
+      "question": "Redis 是怎么让键过期的",
+      "category": "mechanism",
+      "should_refuse": false,
+      "gold_symbols": [
+        "expireIfNeeded",
+        "activeExpireCycle",
+        "activeExpireCycleTryExpire"
+      ],
+      "note": "惰性删除在 db.c，主动过期在 expire.c",
+      "top_score": 0.8159232139587402,
+      "top_scores": [
+        0.8159232139587402,
+        0.694526731967926,
+        0.6558351516723633,
+        0.6484729051589966,
+        0.5966394543647766
+      ],
+      "feature": -0.08835071051467512,
+      "top1_symbol": "activeExpireCycleTryExpire",
+      "top1_path": "src/expire.c",
+      "recall1": true,
+      "recall5": true,
+      "degraded": []
+    },
+    {
+      "id": "q010",
+      "question": "主从复制的握手流程是怎样的",
+      "category": "mechanism",
+      "should_refuse": false,
+      "gold_symbols": [
+        "replicationCron",
+        "syncWithMaster",
+        "replicaofCommand"
+      ],
+      "note": "src/replication.c",
+      "top_score": 0.2513786852359772,
+      "top_scores": [
+        0.2513786852359772,
+        0.18884463608264923,
+        0.16422271728515625,
+        0.11639329046010971,
+        0.08934429287910461
+      ],
+      "feature": -0.5996715495491837,
+      "top1_symbol": "roleCommand",
+      "top1_path": "src/replication.c",
+      "recall1": false,
+      "recall5": false,
+      "degraded": []
+    },
+    {
+      "id": "q011",
+      "question": "RDB 保存一个字符串时怎么处理编码",
+      "category": "mechanism",
+      "should_refuse": false,
+      "gold_symbols": [
+        "rdbSaveRawString",
+        "rdbSaveObject"
+      ],
+      "note": "src/rdb.c",
+      "top_score": 0.947904646396637,
+      "top_scores": [
+        0.947904646396637,
+        0.9478591084480286,
+        0.9233067035675049,
+        0.9227688908576965,
+        0.8690808415412903
+      ],
+      "feature": -0.02323534792203771,
+      "top1_symbol": "rdbSaveRawString",
+      "top1_path": "src/rdb.c",
+      "recall1": true,
+      "recall5": true,
+      "degraded": []
+    },
+    {
+      "id": "q012",
+      "question": "AOF 重写是怎么工作的",
+      "category": "mechanism",
+      "should_refuse": false,
+      "gold_symbols": [
+        "rewriteAppendOnlyFile",
+        "rewriteAppendOnlyFileBackground"
+      ],
+      "note": "src/aof.c",
+      "top_score": 0.9688119888305664,
+      "top_scores": [
+        0.9688119888305664,
+        0.893602728843689,
+        0.8374723792076111,
+        0.8099591135978699,
+        0.8039349913597107
+      ],
+      "feature": -0.01376049553516977,
+      "top1_symbol": "rewriteAppendOnlyFileBackground",
+      "top1_path": "src/aof.c",
+      "recall1": true,
+      "recall5": true,
+      "degraded": []
+    },
+    {
+      "id": "q013",
+      "question": "集群的槽位迁移流程是什么",
+      "category": "mechanism",
+      "should_refuse": false,
+      "gold_symbols": [
+        "clusterSetSlotMigrating",
+        "clusterSetSlotImporting",
+        "migrateCommand"
+      ],
+      "note": "src/cluster.c",
+      "top_score": 0.6518383622169495,
+      "top_scores": [
+        0.6518383622169495,
+        0.5820456743240356,
+        0.5009745359420776,
+        0.3792054355144501,
+        0.34521374106407166
+      ],
+      "feature": -0.18586008386953928,
+      "top1_symbol": "clusterHandleSlaveMigration",
+      "top1_path": "src/cluster.c",
+      "recall1": false,
+      "recall5": false,
+      "degraded": []
+    },
+    {
+      "id": "q014",
+      "question": "Lua 脚本是怎么被执行的",
+      "category": "mechanism",
+      "should_refuse": false,
+      "gold_symbols": [
+        "evalGenericCommand",
+        "scriptCall"
+      ],
+      "note": "src/eval.c / script_lua.c",
+      "top_score": 0.6478152871131897,
+      "top_scores": [
+        0.6478152871131897,
+        0.5772027373313904,
+        0.5016911625862122,
+        0.41136449575424194,
+        0.2560817003250122
+      ],
+      "feature": -0.1885488077451577,
+      "top1_symbol": "ldbEval",
+      "top1_path": "src/eval.c",
+      "recall1": false,
+      "recall5": false,
+      "degraded": []
+    },
+    {
+      "id": "q015",
+      "question": "字典的渐进式 rehash 怎么实现",
+      "category": "mechanism",
+      "should_refuse": false,
+      "gold_symbols": [
+        "dictRehash",
+        "_dictRehashStep"
+      ],
+      "note": "src/dict.c",
+      "top_score": 0.9876803159713745,
+      "top_scores": [
+        0.9876803159713745,
+        0.804443895816803,
+        0.7781120538711548,
+        0.7652353644371033,
+        0.7452731132507324
+      ],
+      "feature": -0.005383601440668043,
+      "top1_symbol": "incrementallyRehash",
+      "top1_path": "src/server.c",
+      "recall1": false,
+      "recall5": true,
+      "degraded": []
+    },
+    {
+      "id": "q016",
+      "question": "有序集合的跳表是怎么插入节点的",
+      "category": "mechanism",
+      "should_refuse": false,
+      "gold_symbols": [
+        "zslInsert"
+      ],
+      "note": "src/t_zset.c",
+      "top_score": 0.10247544199228287,
+      "top_scores": [
+        0.10247544199228287,
+        0.08970622718334198,
+        0.06879857182502747,
+        0.05804863199591637,
+        0.043113064020872116
+      ],
+      "feature": -0.9893801998287768,
+      "top1_symbol": "_quicklistInsert",
+      "top1_path": "src/quicklist.c",
+      "recall1": false,
+      "recall5": false,
+      "degraded": []
+    },
+    {
+      "id": "q017",
+      "question": "listpack 扩容时怎么判断空间是否够",
+      "category": "mechanism",
+      "should_refuse": false,
+      "gold_symbols": [
+        "lpSafeToAdd",
+        "lpShrinkToFit"
+      ],
+      "note": "src/listpack.c",
+      "top_score": 0.4011015295982361,
+      "top_scores": [
+        0.4011015295982361,
+        0.29849186539649963,
+        0.2960769236087799,
+        0.2867329716682434,
+        0.21486979722976685
+      ],
+      "feature": -0.3967456818358381,
+      "top1_symbol": "lpSafeToAdd",
+      "top1_path": "src/listpack.c",
+      "recall1": true,
+      "recall5": true,
+      "degraded": []
+    },
+    {
+      "id": "q018",
+      "question": "阻塞的列表 push 之后怎么唤醒客户端",
+      "category": "mechanism",
+      "should_refuse": false,
+      "gold_symbols": [
+        "signalKeyAsReady",
+        "handleClientsBlockedOnKey"
+      ],
+      "note": "src/blocked.c / t_list.c",
+      "top_score": 0.5768763422966003,
+      "top_scores": [
+        0.5768763422966003,
+        0.2705639600753784,
+        0.26952266693115234,
+        0.21104086935520172,
+        0.19330313801765442
+      ],
+      "feature": -0.23891727109683242,
+      "top1_symbol": "signalKeyAsReadyLogic",
+      "top1_path": "src/blocked.c",
+      "recall1": false,
+      "recall5": false,
+      "degraded": []
+    },
+    {
+      "id": "q019",
+      "question": "where is the event loop created for the server",
+      "category": "locate",
+      "should_refuse": false,
+      "gold_symbols": [
+        "aeCreateEventLoop",
+        "initServer"
+      ],
+      "note": "答案应是 aeCreateEventLoop(ae.c:67)",
+      "top_score": 0.466356486082077,
+      "top_scores": [
+        0.466356486082077,
+        0.31299665570259094,
+        0.2717773914337158,
+        0.26266759634017944,
+        0.24881823360919952
+      ],
+      "feature": -0.3312819786951301,
+      "top1_symbol": "initServer",
+      "top1_path": "src/server.c",
+      "recall1": true,
+      "recall5": true,
+      "degraded": []
+    },
+    {
+      "id": "q020",
+      "question": "命令表在哪个结构里定义",
+      "category": "locate",
+      "should_refuse": false,
+      "gold_symbols": [
+        "populateCommandTable",
+        "serverCommandTable",
+        "commandTableDictType"
+      ],
+      "note": "src/server.c",
+      "top_score": 0.4861040413379669,
+      "top_scores": [
+        0.4861040413379669,
+        0.31370803713798523,
+        0.28205034136772156,
+        0.17612311244010925,
+        0.0870659276843071
+      ],
+      "feature": -0.31327076830319356,
+      "top1_symbol": "COMMAND_STRUCT",
+      "top1_path": "src/cli_commands.c",
+      "recall1": false,
+      "recall5": true,
+      "degraded": []
+    },
+    {
+      "id": "q021",
+      "question": "内存分配是在哪里实现的",
+      "category": "locate",
+      "should_refuse": false,
+      "gold_symbols": [
+        "zmalloc",
+        "ztrymalloc",
+        "zmalloc_used_memory"
+      ],
+      "note": "src/zmalloc.c",
+      "top_score": 0.00629095733165741,
+      "top_scores": [
+        0.00629095733165741,
+        0.005040253512561321,
+        0.0049155945889651775,
+        0.0043627112172544,
+        0.00432123988866806
+      ],
+      "feature": -2.201283260402115,
+      "top1_symbol": "memoryCommand",
+      "top1_path": "src/object.c",
+      "recall1": false,
+      "recall5": false,
+      "degraded": []
+    },
+    {
+      "id": "q022",
+      "question": "集群节点的结构体定义在哪里",
+      "category": "locate",
+      "should_refuse": false,
+      "gold_symbols": [
+        "clusterNode"
+      ],
+      "gold_files": [
+        "src/cluster.h"
+      ],
+      "note": "struct clusterNode，作为 struct chunk 检索",
+      "top_score": 0.2403896152973175,
+      "top_scores": [
+        0.2403896152973175,
+        0.1568440943956375,
+        0.0940602719783783,
+        0.07179664075374603,
+        0.016564365476369858
+      ],
+      "feature": -0.6190842975531792,
+      "top1_symbol": "clusterManagerNodeArray",
+      "top1_path": "src/redis-cli.c",
+      "recall1": false,
+      "recall5": true,
+      "degraded": []
+    },
+    {
+      "id": "q023",
+      "question": "客户端输出缓冲区是怎么处理的",
+      "category": "locate",
+      "should_refuse": false,
+      "gold_symbols": [
+        "addReply",
+        "_addReplyToBuffer",
+        "closeClientOnOutputBufferLimitReached"
+      ],
+      "note": "src/networking.c",
+      "top_score": 0.8254632949829102,
+      "top_scores": [
+        0.8254632949829102,
+        0.7636785507202148,
+        0.5635738372802734,
+        0.5257264971733093,
+        0.5080627799034119
+      ],
+      "feature": -0.08330223329250944,
+      "top1_symbol": "clientsCronResizeOutputBuffer",
+      "top1_path": "src/server.c",
+      "recall1": false,
+      "recall5": false,
+      "degraded": []
+    },
+    {
+      "id": "q024",
+      "question": "ACL 的用户权限在哪里被检查",
+      "category": "locate",
+      "should_refuse": false,
+      "gold_symbols": [
+        "ACLCheckAllPerm",
+        "ACLCheckCommandPerm",
+        "ACLUserCheckKeyPerm"
+      ],
+      "note": "src/acl.c",
+      "top_score": 0.8977988958358765,
+      "top_scores": [
+        0.8977988958358765,
+        0.8388721942901611,
+        0.78302001953125,
+        0.752357006072998,
+        0.7311736941337585
+      ],
+      "feature": -0.046820933054081734,
+      "top1_symbol": "ACLCheckAllPerm",
+      "top1_path": "src/acl.c",
+      "recall1": true,
+      "recall5": true,
+      "degraded": []
+    },
+    {
+      "id": "q025",
+      "question": "过期循环是在哪里被触发的",
+      "category": "locate",
+      "should_refuse": false,
+      "gold_symbols": [
+        "activeExpireCycle",
+        "databasesCron",
+        "beforeSleep"
+      ],
+      "note": "src/expire.c / server.c",
+      "top_score": 0.04844898357987404,
+      "top_scores": [
+        0.04844898357987404,
+        0.03771395981311798,
+        0.02298681251704693,
+        0.02079220488667488,
+        0.012600786052644253
+      ],
+      "feature": -1.314715329661355,
+      "top1_symbol": "ACTIVE_EXPIRE_CYCLE_KEYS_PER_LOOP",
+      "top1_path": "src/expire.c",
+      "recall1": false,
+      "recall5": true,
+      "degraded": []
+    },
+    {
+      "id": "r001",
+      "question": "如何配置 Kubernetes Pod 的资源限制",
+      "category": "refuse",
+      "should_refuse": true,
+      "gold_symbols": [],
+      "note": "与 Redis 源码无关",
+      "top_score": 0.024403896182775497,
+      "top_scores": [
+        0.024403896182775497,
+        0.008169853128492832,
+        0.007436023093760014,
+        0.007008711341768503,
+        0.005351209081709385
+      ],
+      "feature": -1.612540831218727,
+      "top1_symbol": "quicklistisSetPackedThreshold",
+      "top1_path": "src/quicklist.c",
+      "recall1": false,
+      "recall5": false,
+      "degraded": []
+    },
+    {
+      "id": "r002",
+      "question": "Redis 支持 GraphQL 查询吗",
+      "category": "refuse",
+      "should_refuse": true,
+      "gold_symbols": [],
+      "note": "Redis 7.2 无 GraphQL",
+      "top_score": 0.06294231116771698,
+      "top_scores": [
+        0.06294231116771698,
+        0.05946146324276924,
+        0.05457492545247078,
+        0.034536782652139664,
+        0.03434910252690315
+      ],
+      "feature": -1.2010573143468823,
+      "top1_symbol": "parseRedisUri",
+      "top1_path": "src/cli_common.c",
+      "recall1": false,
+      "recall5": false,
+      "degraded": []
+    },
+    {
+      "id": "r003",
+      "question": "how does Redis implement machine learning model inference",
+      "category": "refuse",
+      "should_refuse": true,
+      "gold_symbols": [],
+      "note": "Redis 无 ML 推理",
+      "top_score": 0.15500378608703613,
+      "top_scores": [
+        0.15500378608703613,
+        0.11080233007669449,
+        0.10013534873723984,
+        0.0992375835776329,
+        0.09283935278654099
+      ],
+      "feature": -0.8096576937224422,
+      "top1_symbol": "main",
+      "top1_path": "src/server.c",
+      "recall1": false,
+      "recall5": false,
+      "degraded": []
+    },
+    {
+      "id": "r004",
+      "question": "如何用 Python 读取一个 CSV 文件",
+      "category": "refuse",
+      "should_refuse": true,
+      "gold_symbols": [],
+      "note": "与 C 源码无关",
+      "top_score": 0.39670056104660034,
+      "top_scores": [
+        0.39670056104660034,
+        0.10316110402345657,
+        0.08332300186157227,
+        0.050246644765138626,
+        0.04737924411892891
+      ],
+      "feature": -0.40153718531039617,
+      "top1_symbol": "OUTPUT_CSV",
+      "top1_path": "src/redis-cli.c",
+      "recall1": false,
+      "recall5": false,
+      "degraded": []
+    },
+    {
+      "id": "r005",
+      "question": "Redis 的 WebSocket 服务端是怎么实现的",
+      "category": "refuse",
+      "should_refuse": true,
+      "gold_symbols": [],
+      "note": "Redis 7.2 无 WebSocket",
+      "top_score": 0.2110120952129364,
+      "top_scores": [
+        0.2110120952129364,
+        0.1674405187368393,
+        0.1666606217622757,
+        0.1447662115097046,
+        0.13253645598888397
+      ],
+      "feature": -0.6756926502298657,
+      "top1_symbol": "createClient",
+      "top1_path": "src/redis-benchmark.c",
+      "recall1": false,
+      "recall5": false,
+      "degraded": []
+    },
+    {
+      "id": "r006",
+      "question": "React 组件的生命周期有哪些阶段",
+      "category": "refuse",
+      "should_refuse": true,
+      "gold_symbols": [],
+      "note": "前端框架",
+      "top_score": 0.010895764455199242,
+      "top_scores": [
+        0.010895764455199242,
+        0.00889788381755352,
+        0.0039285290986299515,
+        0.003749413648620248,
+        0.0032185076270252466
+      ],
+      "feature": -1.9627422939144874,
+      "top1_symbol": "REDIS_CLI_KEEPALIVE_INTERVAL",
+      "top1_path": "src/redis-cli.c",
+      "recall1": false,
+      "recall5": false,
+      "degraded": []
+    },
+    {
+      "id": "r007",
+      "question": "Redis 支持 HTTP/2 协议吗",
+      "category": "refuse",
+      "should_refuse": true,
+      "gold_symbols": [],
+      "note": "Redis 用 RESP 协议",
+      "top_score": 0.3540245592594147,
+      "top_scores": [
+        0.3540245592594147,
+        0.31319528818130493,
+        0.24885815382003784,
+        0.22073449194431305,
+        0.21512384712696075
+      ],
+      "feature": -0.4509666092146707,
+      "top1_symbol": "cliSecureConnection",
+      "top1_path": "src/cli_common.c",
+      "recall1": false,
+      "recall5": false,
+      "degraded": []
+    },
+    {
+      "id": "r008",
+      "question": "如何实现 OAuth2 授权码流程",
+      "category": "refuse",
+      "should_refuse": true,
+      "gold_symbols": [],
+      "note": "Redis 有 ACL 但不是 OAuth2",
+      "top_score": 0.07182563841342926,
+      "top_scores": [
+        0.07182563841342926,
+        0.06250976026058197,
+        0.06213489919900894,
+        0.030655313283205032,
+        0.027570690959692
+      ],
+      "feature": -1.143720505145311,
+      "top1_symbol": "helloCommand",
+      "top1_path": "src/networking.c",
+      "recall1": false,
+      "recall5": false,
+      "degraded": []
+    },
+    {
+      "id": "r009",
+      "question": "怎么调优 JVM 的垃圾回收参数",
+      "category": "refuse",
+      "should_refuse": true,
+      "gold_symbols": [],
+      "note": "Redis 是 C 实现",
+      "top_score": 0.08528318256139755,
+      "top_scores": [
+        0.08528318256139755,
+        0.035222478210926056,
+        0.013662027195096016,
+        0.008106173016130924,
+        0.006483605597168207
+      ],
+      "feature": -1.0691366011990302,
+      "top1_symbol": "jemalloc_purge",
+      "top1_path": "src/zmalloc.c",
+      "recall1": false,
+      "recall5": false,
+      "degraded": []
+    },
+    {
+      "id": "r010",
+      "question": "Redis 的 REST API 路由是怎么注册的",
+      "category": "refuse",
+      "should_refuse": true,
+      "gold_symbols": [],
+      "note": "Redis 无 REST API",
+      "top_score": 0.9286994934082031,
+      "top_scores": [
+        0.9286994934082031,
+        0.09494183957576752,
+        0.09052368998527527,
+        0.0734250545501709,
+        0.05847754701972008
+      ],
+      "feature": -0.03212479135309959,
+      "top1_symbol": "REGISTER_API",
+      "top1_path": "src/module.c",
+      "recall1": false,
+      "recall5": false,
+      "degraded": []
+    },
+    {
+      "id": "r011",
+      "question": "Nginx 反向代理的 upstream 怎么配置",
+      "category": "refuse",
+      "should_refuse": true,
+      "gold_symbols": [],
+      "note": "与 Redis 无关",
+      "top_score": 0.06222536787390709,
+      "top_scores": [
+        0.06222536787390709,
+        0.05273660644888878,
+        0.023339681327342987,
+        0.020466068759560585,
+        0.015602421946823597
+      ],
+      "feature": -1.206032527180026,
+      "top1_symbol": "createUIntConfig",
+      "top1_path": "src/config.c",
+      "recall1": false,
+      "recall5": false,
+      "degraded": []
+    },
+    {
+      "id": "r012",
+      "question": "分布式事务的两阶段提交怎么实现",
+      "category": "refuse",
+      "should_refuse": true,
+      "gold_symbols": [],
+      "note": "Redis 有 MULTI 但不是 2PC",
+      "top_score": 0.00367800728417933,
+      "top_scores": [
+        0.00367800728417933,
+        0.0032363722566515207,
+        0.0028613556642085314,
+        0.0026768427342176437,
+        0.0024215138982981443
+      ],
+      "feature": -2.4343874149903404,
+      "top1_symbol": "publishCommand",
+      "top1_path": "src/pubsub.c",
+      "recall1": false,
+      "recall5": false,
+      "degraded": []
+    },
+    {
+      "id": "r013",
+      "question": "SQL 查询优化器怎么选择执行计划",
+      "category": "refuse",
+      "should_refuse": true,
+      "gold_symbols": [],
+      "note": "Redis 无 SQL",
+      "top_score": 0.04767701402306557,
+      "top_scores": [
+        0.04767701402306557,
+        0.0245695561170578,
+        0.014001545496284962,
+        0.011680363677442074,
+        0.01086389645934105
+      ],
+      "feature": -1.3216909519656699,
+      "top1_symbol": "ql_release_iterator",
+      "top1_path": "src/quicklist.c",
+      "recall1": false,
+      "recall5": false,
+      "degraded": []
+    },
+    {
+      "id": "r014",
+      "question": "Docker 镜像的构建缓存是怎么工作的",
+      "category": "refuse",
+      "should_refuse": true,
+      "gold_symbols": [],
+      "note": "与 Redis 源码无关",
+      "top_score": 0.013954411260783672,
+      "top_scores": [
+        0.013954411260783672,
+        0.011992957442998886,
+        0.01123941969126463,
+        0.006803734693676233,
+        0.005560216493904591
+      ],
+      "feature": -1.8552884817541089,
+      "top1_symbol": "feedReplicationBuffer",
+      "top1_path": "src/replication.c",
+      "recall1": false,
+      "recall5": false,
+      "degraded": []
+    },
+    {
+      "id": "r015",
+      "question": "Git 的分支合并策略怎么选",
+      "category": "refuse",
+      "should_refuse": true,
+      "gold_symbols": [],
+      "note": "与 Redis 源码无关",
+      "top_score": 0.009230430237948895,
+      "top_scores": [
+        0.009230430237948895,
+        0.007254039868712425,
+        0.004594443831592798,
+        0.004218483343720436,
+        0.0031717675738036633
+      ],
+      "feature": -2.034778055679134,
+      "top1_symbol": "_quicklistNodeAllowMerge",
+      "top1_path": "src/quicklist.c",
+      "recall1": false,
+      "recall5": false,
+      "degraded": []
+    }
+  ]
+}

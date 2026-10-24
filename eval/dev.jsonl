@@ -1,0 +1,43 @@
+{"id": "q001", "question": "zmalloc_used_memory 这个函数做什么", "category": "symbol", "should_refuse": false, "gold_symbols": ["zmalloc_used_memory"], "note": "定义在 src/zmalloc.c"}
+{"id": "q002", "question": "aeCreateEventLoop 在哪里定义，它做了什么", "category": "symbol", "should_refuse": false, "gold_symbols": ["aeCreateEventLoop"], "note": "src/ae.c"}
+{"id": "q003", "question": "listTypePush 的实现逻辑", "category": "symbol", "should_refuse": false, "gold_symbols": ["listTypePush"], "note": "src/t_list.c"}
+{"id": "q004", "question": "string2ll 如何解析字符串为 long long", "category": "symbol", "should_refuse": false, "gold_symbols": ["string2ll"], "note": "src/util.c"}
+{"id": "q005", "question": "rdbSaveRawString 怎么序列化一个字符串", "category": "symbol", "should_refuse": false, "gold_symbols": ["rdbSaveRawString"], "note": "src/rdb.c"}
+{"id": "q006", "question": "ACLCheckAllPerm 检查哪些权限", "category": "symbol", "should_refuse": false, "gold_symbols": ["ACLCheckAllPerm"], "note": "src/acl.c"}
+{"id": "q007", "question": "dictFind 的查找流程", "category": "symbol", "should_refuse": false, "gold_symbols": ["dictFind"], "note": "src/dict.c"}
+{"id": "q008", "question": "sdsMakeRoomFor 如何扩容 sds", "category": "symbol", "should_refuse": false, "gold_symbols": ["sdsMakeRoomFor"], "note": "src/sds.c"}
+
+{"id": "q009", "question": "Redis 是怎么让键过期的", "category": "mechanism", "should_refuse": false, "gold_symbols": ["expireIfNeeded", "activeExpireCycle", "activeExpireCycleTryExpire"], "note": "惰性删除在 db.c，主动过期在 expire.c"}
+{"id": "q010", "question": "主从复制的握手流程是怎样的", "category": "mechanism", "should_refuse": false, "gold_symbols": ["replicationCron", "syncWithMaster", "replicaofCommand"], "note": "src/replication.c"}
+{"id": "q011", "question": "RDB 保存一个字符串时怎么处理编码", "category": "mechanism", "should_refuse": false, "gold_symbols": ["rdbSaveRawString", "rdbSaveObject"], "note": "src/rdb.c"}
+{"id": "q012", "question": "AOF 重写是怎么工作的", "category": "mechanism", "should_refuse": false, "gold_symbols": ["rewriteAppendOnlyFile", "rewriteAppendOnlyFileBackground"], "note": "src/aof.c"}
+{"id": "q013", "question": "集群的槽位迁移流程是什么", "category": "mechanism", "should_refuse": false, "gold_symbols": ["clusterSetSlotMigrating", "clusterSetSlotImporting", "migrateCommand"], "note": "src/cluster.c"}
+{"id": "q014", "question": "Lua 脚本是怎么被执行的", "category": "mechanism", "should_refuse": false, "gold_symbols": ["evalGenericCommand", "scriptCall"], "note": "src/eval.c / script_lua.c"}
+{"id": "q015", "question": "字典的渐进式 rehash 怎么实现", "category": "mechanism", "should_refuse": false, "gold_symbols": ["dictRehash", "_dictRehashStep"], "note": "src/dict.c"}
+{"id": "q016", "question": "有序集合的跳表是怎么插入节点的", "category": "mechanism", "should_refuse": false, "gold_symbols": ["zslInsert"], "note": "src/t_zset.c"}
+{"id": "q017", "question": "listpack 扩容时怎么判断空间是否够", "category": "mechanism", "should_refuse": false, "gold_symbols": ["lpSafeToAdd", "lpShrinkToFit"], "note": "src/listpack.c"}
+{"id": "q018", "question": "阻塞的列表 push 之后怎么唤醒客户端", "category": "mechanism", "should_refuse": false, "gold_symbols": ["signalKeyAsReady", "handleClientsBlockedOnKey"], "note": "src/blocked.c / t_list.c"}
+
+{"id": "q019", "question": "where is the event loop created for the server", "category": "locate", "should_refuse": false, "gold_symbols": ["aeCreateEventLoop", "initServer"], "note": "答案应是 aeCreateEventLoop(ae.c:67)"}
+{"id": "q020", "question": "命令表在哪个结构里定义", "category": "locate", "should_refuse": false, "gold_symbols": ["populateCommandTable", "serverCommandTable", "commandTableDictType"], "note": "src/server.c"}
+{"id": "q021", "question": "内存分配是在哪里实现的", "category": "locate", "should_refuse": false, "gold_symbols": ["zmalloc", "ztrymalloc", "zmalloc_used_memory"], "note": "src/zmalloc.c"}
+{"id": "q022", "question": "集群节点的结构体定义在哪里", "category": "locate", "should_refuse": false, "gold_symbols": ["clusterNode"], "gold_files": ["src/cluster.h"], "note": "struct clusterNode，作为 struct chunk 检索"}
+{"id": "q023", "question": "客户端输出缓冲区是怎么处理的", "category": "locate", "should_refuse": false, "gold_symbols": ["addReply", "_addReplyToBuffer", "closeClientOnOutputBufferLimitReached"], "note": "src/networking.c"}
+{"id": "q024", "question": "ACL 的用户权限在哪里被检查", "category": "locate", "should_refuse": false, "gold_symbols": ["ACLCheckAllPerm", "ACLCheckCommandPerm", "ACLUserCheckKeyPerm"], "note": "src/acl.c"}
+{"id": "q025", "question": "过期循环是在哪里被触发的", "category": "locate", "should_refuse": false, "gold_symbols": ["activeExpireCycle", "databasesCron", "beforeSleep"], "note": "src/expire.c / server.c"}
+
+{"id": "r001", "question": "如何配置 Kubernetes Pod 的资源限制", "category": "refuse", "should_refuse": true, "gold_symbols": [], "note": "与 Redis 源码无关"}
+{"id": "r002", "question": "Redis 支持 GraphQL 查询吗", "category": "refuse", "should_refuse": true, "gold_symbols": [], "note": "Redis 7.2 无 GraphQL"}
+{"id": "r003", "question": "how does Redis implement machine learning model inference", "category": "refuse", "should_refuse": true, "gold_symbols": [], "note": "Redis 无 ML 推理"}
+{"id": "r004", "question": "如何用 Python 读取一个 CSV 文件", "category": "refuse", "should_refuse": true, "gold_symbols": [], "note": "与 C 源码无关"}
+{"id": "r005", "question": "Redis 的 WebSocket 服务端是怎么实现的", "category": "refuse", "should_refuse": true, "gold_symbols": [], "note": "Redis 7.2 无 WebSocket"}
+{"id": "r006", "question": "React 组件的生命周期有哪些阶段", "category": "refuse", "should_refuse": true, "gold_symbols": [], "note": "前端框架"}
+{"id": "r007", "question": "Redis 支持 HTTP/2 协议吗", "category": "refuse", "should_refuse": true, "gold_symbols": [], "note": "Redis 用 RESP 协议"}
+{"id": "r008", "question": "如何实现 OAuth2 授权码流程", "category": "refuse", "should_refuse": true, "gold_symbols": [], "note": "Redis 有 ACL 但不是 OAuth2"}
+{"id": "r009", "question": "怎么调优 JVM 的垃圾回收参数", "category": "refuse", "should_refuse": true, "gold_symbols": [], "note": "Redis 是 C 实现"}
+{"id": "r010", "question": "Redis 的 REST API 路由是怎么注册的", "category": "refuse", "should_refuse": true, "gold_symbols": [], "note": "Redis 无 REST API"}
+{"id": "r011", "question": "Nginx 反向代理的 upstream 怎么配置", "category": "refuse", "should_refuse": true, "gold_symbols": [], "note": "与 Redis 无关"}
+{"id": "r012", "question": "分布式事务的两阶段提交怎么实现", "category": "refuse", "should_refuse": true, "gold_symbols": [], "note": "Redis 有 MULTI 但不是 2PC"}
+{"id": "r013", "question": "SQL 查询优化器怎么选择执行计划", "category": "refuse", "should_refuse": true, "gold_symbols": [], "note": "Redis 无 SQL"}
+{"id": "r014", "question": "Docker 镜像的构建缓存是怎么工作的", "category": "refuse", "should_refuse": true, "gold_symbols": [], "note": "与 Redis 源码无关"}
+{"id": "r015", "question": "Git 的分支合并策略怎么选", "category": "refuse", "should_refuse": true, "gold_symbols": [], "note": "与 Redis 源码无关"}
