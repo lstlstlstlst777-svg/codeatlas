@@ -29,7 +29,7 @@ SSE API / 前端 / compose 全栈，`docker compose up -d` 一条命令可跑。
 | 检索质量（dev 40 条） | Recall@1 **52%**、Recall@5 **72%** | — |
 | 拒答门（dev 40 条） | τ=-1.00，F1 **0.741**，误拒率 **8%** | 误拒 ≤10% |
 | 部署 | `docker compose up -d` → 三容器 healthy，首页 / 问答可用 | 一条命令 |
-| 测试总数 | **293 passed** | 全绿、无 skip |
+| 测试总数 | **305 passed** | 全绿、无 skip |
 
 延迟按"可控边界"拆开计量：本地检索、远程 embed、远程 rerank、缓存命中各一条线。
 混成一个数字会让一个已经很快的实现被误判为不达标（见 ISSUE-024）。
@@ -172,6 +172,26 @@ event: done   data: {完整 AskResponse}
 
 > 本机通过 `http_proxy` 走了系统代理，curl 访问 127.0.0.1 会被代理拦截并返回
 > `upstream connect failed`。测试时加 `--noproxy '*'`。
+
+## 作为 MCP 工具接入 agent
+
+```bash
+# stdio server：两个工具，search_code（语义）+ get_symbol（精确）
+D:/miniconda3/envs/codeatlas/python.exe -m codeatlas.mcp.server
+```
+
+Codex 接入配置见 [`docs/MCP.md`](docs/MCP.md)（含 `CODEATLAS_ROOT` 这个必填项的原因）。
+刻意只暴露检索、不暴露"帮我回答"——宿主本身就是 LLM，不需要再过一层。
+
+## 作为 MCP 工具接入 agent
+
+```bash
+# stdio server：两个工具，search_code（语义）+ get_symbol（精确）
+D:/miniconda3/envs/codeatlas/python.exe -m codeatlas.mcp.server
+```
+
+Codex 接入配置见 [`docs/MCP.md`](docs/MCP.md)（含 `CODEATLAS_ROOT` 这个必填项的原因）。
+刻意只暴露检索、不暴露"帮我回答"——宿主本身就是 LLM，不需要再过一层。
 
 ## 为什么不是「让 agent 自己读代码」
 

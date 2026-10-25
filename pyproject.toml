@@ -31,6 +31,9 @@ dependencies = [
     # 0.26.0 的 Python 绑定与 tree-sitter-c 0.24.2 内打包的 runtime 结构体布局不兼容：
     # 大文件（如 Redis acl.c）从第 52 个顶层节点起行号会变成 0x40000000+n。
     # 实测 0.25.2 正常，故钉死，升级前必须用 tests/test_lines.py 的 Redis 全量用例验证。
+    # MCP 1.20/1.21 用了 pydantic 2.14 已移除的 eval_type_backport，导入即崩；
+    # 1.30 是本机 pydantic 2.14.1 下可用的最低版本。
+    "mcp==1.30.0",
     "tree-sitter==0.25.2",
     "tree-sitter-c==0.24.2",
 ]

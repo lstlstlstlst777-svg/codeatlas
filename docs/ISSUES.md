@@ -77,6 +77,8 @@
 | ISSUE-034 | 预览 iframe 里 `navigator.clipboard` 不存在，点击引用报「复制失败」 | P1 | `FIXED` |
 | ISSUE-035 | 点引用只复制 `path:行号`，看不到代码——引用不可核验 | P1 | `FIXED` |
 | ISSUE-036 | 多轮对话缺失：thread_id 只用于断点恢复，追问被当成新问题拒答 | P0 | `FIXED` |
+| ISSUE-037 | `mcp` 1.20/1.21 依赖 pydantic 已删除的 `eval_type_backport`，导入即崩 | P1 | `FIXED` |
+| ISSUE-038 | MCP SDK 的 `env=None` 只透传白名单变量，`CODEATLAS_ROOT` 被静默丢弃 | P1 | `FIXED` |
 
 **P0–P8 全部完成并验收。54 项 FIXED 均有实测数字；5 项 WONTFIX 均附回滚理由。
 剩 1 个 OPEN：ISSUE-027（中文概念查询检索不到英文符号，占 dev 集 2/25）。**
@@ -838,6 +840,32 @@ iframe direct clipboard: TypeError      ← navigator.clipboard 根本不存在
   - 前端加「新对话」按钮。有了上下文就必须有办法**主动断开**，
     否则用户问完 Redis 再问别的，历史会在后台一直跟着；
   - 空态文案还写着"点引用可复制"，实际早已改成展开代码——文案撒谎比没文案更糟。
+
+### ISSUE-037 · `mcp` 与 pydantic 2.14 不兼容【P1，已修】
+
+- **现象**：`pip install mcp==1.20.0` 后 `from mcp.server.fastmcp import FastMCP` 直接
+  `ImportError: cannot import name 'eval_type_backport' from 'pydantic._internal._typing_extra'`。
+  不是运行期才炸，是**导入即崩**。
+- **根因**：pydantic 2.14 移除了 `eval_type_backport`，而 mcp 1.20/1.21 仍在 import 它。
+  两边都是"当前最新"，但没有重叠的可用版本。
+- **修法**：钉 `mcp==1.30.0`（本机 pydantic 2.14.1 下可用的最低版本），写入 pyproject，
+  `check-deps` 现在覆盖 18 个 runtime 依赖。
+- **教训**：这是 ISSUE-002 的同类问题换了张脸——**新依赖必须立刻钉版本并纳入 check-deps**，
+  否则下次在容器里（pydantic 版本可能不同）又会"本机能跑容器炸"。
+
+### ISSUE-038 · MCP 客户端默认不透传环境变量【P1，已修】
+
+- **现象**：冒烟脚本在项目根能跑，`cd /tmp` 后 5 项全挂，返回的是一段 192 字符的提示。
+- **根因**：`StdioServerParameters(env=None)` 在 MCP SDK 里会走 `get_default_environment()`，
+  只透传 `HOME`/`PATH`/`SHELL` 等白名单变量，**`CODEATLAS_ROOT` 被静默丢掉**。
+  子进程退回用 cwd 当项目根 → 找不到 `data/chunks.jsonl.gz`。
+- **修法**：调试客户端显式传 `env={**os.environ}`；宿主（Codex）侧通过
+  `[mcp_servers.codeatlas.env]` 显式设置，行为一致。
+- **顺带产出的价值**：正是这次失败暴露了 `_ready_or_error()` 守卫是有效的——
+  返回的是"检查 CODEATLAS_ROOT / 是否已 index / 容器是否启动"的可操作提示，
+  而不是一串 traceback。agent 拿到这种提示能自己修，拿到 traceback 只能放弃。
+- **教训**：**"能跑"要说明在什么前提下能跑**。在项目根测 MCP 等于没测——
+  宿主的 cwd 从来不是我们的项目。
 
 ---
 
