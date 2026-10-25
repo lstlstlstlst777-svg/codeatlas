@@ -47,6 +47,14 @@ stages: retrieve → gate:pass → generate → validate:4 条引用全部通过
 
 ## 环境（隔离，不碰系统 Python）
 
+**先取代码库**：被索引的源码不进 git（18 MB），需要自己准备。
+
+```bash
+curl -LO https://download.redis.io/releases/redis-7.2.5.tar.gz
+tar xzf redis-7.2.5.tar.gz -C vendor/
+# 换成自己的项目：改 config/default.yaml 的 repo: 一行，再 python tasks.py index --recreate
+```
+
 ```bash
 D:\miniconda3\Scripts\conda.exe create -n codeatlas python=3.11 \
     --override-channels -c defaults -y
